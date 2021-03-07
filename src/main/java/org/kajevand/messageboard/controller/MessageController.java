@@ -31,8 +31,6 @@ public class MessageController {
 
     @GetMapping("/messages")
     public CollectionModel<EntityModel<Message>> findAll(){
-        //TODO: Include link to delete/update if the logged in user is the creator
-
         List<EntityModel<Message>> messages = messageService.findAll().stream()
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
