@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,29 +46,24 @@ public class MessageController {
     }
 
     @DeleteMapping("messages/{id}")
-    public ResponseEntity<?> deleteMessage(@PathVariable Long id){
-        messageService.deleteMessageById(id, getUser());
+    public ResponseEntity<?> deleteMessage(@PathVariable Long id, Principal principal){
+        messageService.deleteMessageById(id, principal.getName());
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("messages")
-    public ResponseEntity<?> addMessage(@RequestBody Message message){
-        EntityModel<Message> model = assembler.toModel(messageService.saveMessage(message, getUser()));
+    public ResponseEntity<?> addMessage(@RequestBody Message message, Principal principal){
+        EntityModel<Message> model = assembler.toModel(messageService.saveMessage(message, principal.getName()));
         return ResponseEntity
                 .created(model.getRequiredLink(IanaLinkRelations.SELF).toUri())
                 .body(model);
     }
 
     @PutMapping("messages/{id}")
-    public ResponseEntity<?> updateMessage(@RequestBody Message message, @PathVariable Long id){
-        EntityModel<Message> model = assembler.toModel(messageService.updateMessageById(message, id, getUser()));
+    public ResponseEntity<?> updateMessage(@RequestBody Message message, @PathVariable Long id, Principal principal){
+        EntityModel<Message> model = assembler.toModel(messageService.updateMessageById(message, id, principal.getName()));
         return ResponseEntity
                 .created(model.getRequiredLink(IanaLinkRelations.SELF).toUri())
                 .body(model);
-    }
-
-    private String getUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication.getName();
     }
 }

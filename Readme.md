@@ -7,6 +7,13 @@
 The Project uses Java 13, Spring Boot, Maven, H2 in memory database and Docker.
 
 ## Building and running
+
+### Run the tests
+
+```
+./mvnw package
+```
+
 ### Run without Docker
 - Java 13 must be installed
 
