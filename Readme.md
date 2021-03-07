@@ -10,7 +10,7 @@ The Project uses Java 13, Spring Boot, Maven, H2 in memory database and Docker.
 ### Run without Docker
 - Java 13 must be installed
 
-To build the project with Maven, execute the following command:
+To build the project with Maven, execute the following command (for Windows, the ``./`` is not needed):
 ```
 ./mvnw package
 ```
@@ -22,33 +22,17 @@ To run the project with maven, execute the following command:
 
 ###Run with Docker
 
-- Docker has to be installed
-
-Optionally, it's possible to run the application in a Docker container. The shell script startDocker.sh
+Optionally, it's possible to run the application in a Docker container. The script startDocker.sh/startDocker.cmd
 runs the Maven build, the Docker build and starts the container in detached mode:
-
-### *nix
-
+ 
 ```
-./startDocker.sh
+./startDocker.sh or startDocker.cmd
 ```
 
-To stop the Docker container, execute the stopDocker.sh script:
+To stop the Docker container, execute the stopDocker.sh/stopDocker.cmd script:
 ```
-./stopDocker.sh
+./stopDocker.sh or stopDocker.cmd
 ```
-
-### Windows
-
-```
-./startDocker.cmd
-```
-
-To stop the Docker container, execute the stopDocker.sh script:
-```
-./stopDocker.cmd
-```
-
 
 ## CRUD Requests
 The API has the following CRUD operations:
@@ -73,7 +57,7 @@ The users added by default are:
 - sam.doe@email.com, password: password
 
 ## Testing the API requests
-There is a shell script set up to test the CRUD requests. It will execute all the operations defined above (*nix only):
+There is a shell script set up to test the CRUD requests. It will execute all the CRUD operations defined above (*nix only):
 ```
 ./requests.sh
 ```
