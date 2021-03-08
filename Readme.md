@@ -8,6 +8,8 @@ The Project uses Java 13, Spring Boot, Maven, H2 in memory database and Docker.
 
 ## Building and running
 
+Prerequisites: JDK 13 installed on the machine, Docker if the docker container is to be used 
+
 ### Run the tests
 
 To run the tests, execute the following command (for Windows, the ``./`` is not needed):
@@ -17,7 +19,6 @@ To run the tests, execute the following command (for Windows, the ``./`` is not 
 ```
 
 ### Run without Docker
-- Java 13 must be installed
 
 To build the project with Maven, execute the following command (for Windows, the ``./`` is not needed):
 ```
