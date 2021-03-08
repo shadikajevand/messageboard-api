@@ -10,8 +10,10 @@ The Project uses Java 13, Spring Boot, Maven, H2 in memory database and Docker.
 
 ### Run the tests
 
+To run the tests, execute the following command (for Windows, the ``./`` is not needed):
+
 ```
-./mvnw package
+./mvnw test
 ```
 
 ### Run without Docker
